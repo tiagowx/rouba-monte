@@ -4,14 +4,14 @@ import React from 'react'
 export const Table: React.FC = ({ children }) => {
 
   return (
-    <Grid container sx={{
-      minWidth: '80%',
-      minHeight: '80%',
+    <Grid container gridColumn={4} sx={{
+      flex:4,
+      alignSelf: 'center',
+      justifySelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-
-      backgroundColor: 'greenyellow',
-      justifyItems: 'stretch'
+      backgroundColor: 'green',
+      padding: '32px',
     }}>
       {children}
     </Grid>

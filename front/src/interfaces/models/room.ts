@@ -1,9 +1,15 @@
+import { ICard } from "./cards";
 import { IPlayer } from "./player";
 
 export interface IRoom {
   id?: number;
   name: string;
   password?: string;
-  players?: IPlayer[];
+  players: IPlayer[];
+  turns: number;
   status: 'finished' | 'waiting' | 'playing';
+  table: ICard[];
+
+  ChooseCard(_deck: ICard[]): ICard;
+  LootCards(_player:IPlayer, _cards: ICard[]) : ICard[];
 }

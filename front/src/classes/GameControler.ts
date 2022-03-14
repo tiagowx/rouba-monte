@@ -27,7 +27,7 @@ export class GameController implements IRoom {
   }
 
   LootCards(_player: IPlayer, _cards: ICard[]) {
-    return _player.lot.concat(_cards); 
+    return _player.lot.concat(_cards);
   };
 
 }

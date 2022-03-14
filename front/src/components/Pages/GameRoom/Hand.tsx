@@ -4,11 +4,15 @@ import React from 'react'
 
 export const Hand: React.FC = ({ children }) => {
   return (
-    <Grid sx={{
+    <Box sx={{
       display: 'flex',
+      flex: '1',
       flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
     }}>
       {children}
-    </Grid>
+    </Box>
   )
 }
+

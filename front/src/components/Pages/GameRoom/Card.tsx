@@ -32,7 +32,6 @@ export const Card: React.FC<ICard> = (card: ICard) => {
       backgroundColor: 'white',
       justifyContent: 'space-around',
       alignContent: 'space-around',
-      padding: '4px',
       cursor: 'grab',
       opacity: '1',
       '&:hover': {

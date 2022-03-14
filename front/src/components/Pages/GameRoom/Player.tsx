@@ -27,7 +27,7 @@ export const Player: React.FC<IPlayer> = (player: IPlayer) => {
       }}>
         <Typography fontWeight='bold' >{player.name}</Typography>
         <Box>
-          <Typography margin='4px'>Monte: {player.lot?.length}</Typography>
+          <Typography margin='4px'>Monte: {player.lot.length}</Typography>
           <Card suit='back' value={''} />
         </Box>
       </Box>

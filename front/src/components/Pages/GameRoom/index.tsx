@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
 import { Box } from "@mui/material"
 import { useState } from "react";
 import { Deck } from "../../../classes/Deck";
@@ -10,10 +11,11 @@ import { Player } from "./Player";
 import { Table } from "./Table";
 
 const index = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
 
   const [deck, setDeck] = useState<Deck>(new Deck(1));
   const [table, setTable] = useState<ICard[]>([]);
+
+  const [selectedCards, setSelectCards] = useState<ICard[]>([]);
 
   //mocks
   const [player1, setPlayer1] = useState<IPlayer>({ name: 'Player1', lot: [], hand: [] });
@@ -32,8 +34,7 @@ const index = () => {
       let card = GC.ChooseCard(deck.cards);
 
       let newDeckCards = deck.cards.filter((item) => {
-        if (item !== card)
-          return item
+          return item !== card
       });
 
       newDeck.cards = newDeckCards;
@@ -50,7 +51,7 @@ const index = () => {
       let newDeck = deck;
       let newPlayer1 = player1;
       let newPlayer2 = player2;
-      
+
       let card = GC.ChooseCard(deck.cards);
 
       let newDeckCards = deck.cards.filter((item) => {
@@ -66,7 +67,7 @@ const index = () => {
 
       card = GC.ChooseCard(deck.cards);
 
-      newDeckCards = deck.cards.filter((item) => {
+      newDeckCards = deck.cards.filter(item => {
         if (item !== card)
           return item
       });
@@ -77,6 +78,38 @@ const index = () => {
       setPlayer2(newPlayer2);
 
     }
+  }
+
+  function handlerSelectCards(card: ICard, player: IPlayer): any {
+    if (selectedCards.length < 2) {
+      let selecteds = selectedCards;
+      selecteds.push(card);
+      setSelectCards(selecteds);
+    }
+
+    if (selectedCards.length === 2 && selectedCards[0].value === selectedCards[1].value) {
+      let newTable = table
+        .filter(item => item !== selectedCards[0])
+        .filter(item => item !== selectedCards[1]);
+
+      setTable(newTable);
+
+      let newPlayer = player;
+      newPlayer.hand = player.hand
+        .filter(item => item !== selectedCards[0])
+        .filter(item => item !== selectedCards[1]);
+
+      newPlayer.lot = newPlayer.lot.concat(selectedCards);
+
+      if (player1 === player)
+        setPlayer1(newPlayer);
+      else if (player2 === player)
+        setPlayer2(newPlayer);
+
+
+      setSelectCards([]);
+    }
+    console.log(selectedCards.length, table.length, player1.hand.length)
   }
 
   return (
@@ -90,13 +123,19 @@ const index = () => {
 
       <Table>
         {table.map(
-          c => {
+          card => {
             return (
-              <Card
-                key={c.value + c.suit}
-                suit={c.suit}
-                value={c.value}
-              />)
+              <Box
+                key={card.value + card.suit} onClick={() => handlerSelectCards(card, player1)}>
+
+                <Card
+                  key={card.value + card.suit}
+                  suit={card.suit}
+                  value={card.value}
+                />
+              </Box>
+
+            )
           })}
       </Table>
 
@@ -107,15 +146,45 @@ const index = () => {
         justifyContent: 'center'
       }}>
 
-        <Player key={player1.id} name={player1.name} hand={player1.hand} lot={player1.lot} />
+        <Player key={player1.id} name={player1.name} hand={player1.hand} lot={player1.lot}>
+          {player1.hand.map(card => {
+            return (
+              <Box
+                key={card.value + card.suit}
+                onClick={() => handlerSelectCards(card, player1)}>
+
+                <Card
+                  key={card.value + card.suit}
+                  value={card.value}
+                  suit={card.suit}
+                />
+              </Box>
+            )
+          })}
+        </Player>
+
         <Box sx={{
           display: 'flex',
           justifyContent: 'center'
         }}>
           <button onClick={handlerStart}>Start</button>
-
         </Box>
-        <Player key={player2.id} name={player2.name} hand={player2.hand} lot={player2.lot} />
+        <Player key={player2.id} name={player2.name} hand={player2.hand} lot={player2.lot}>
+          {player2.hand.map(card => {
+            return (
+              <Box
+                key={card.value + card.suit}
+                onClick={() => handlerSelectCards(card, player2)}>
+
+                <Card
+                  key={card.value + card.suit}
+                  value={card.value}
+                  suit={card.suit}
+                />
+              </Box>
+            )
+          })}
+        </Player>
       </Box>
 
     </Box>

@@ -24,7 +24,7 @@ export const Card: React.FC<ICard> = (card: ICard) => {
   }
 
   return (
-    <Paper sx={{
+    <Paper  sx={{
       color: _color,
       width: '75px',
       height: '90px',
@@ -47,6 +47,7 @@ export const Card: React.FC<ICard> = (card: ICard) => {
         opacity: '0.8',
       },
     }}>
+
       {card.suit !== 'back' &&
         <Typography fontWeight='bold' variant='h5' component={'h5'}>{card.value}</Typography>
       }

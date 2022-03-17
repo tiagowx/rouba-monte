@@ -2,7 +2,6 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { IPlayer } from '../../../interfaces/models/player'
 import { Card } from './Card'
-import { Hand } from './Hand'
 
 export const Player: React.FC<IPlayer> = (player: IPlayer) => {
   const _color = () => {
@@ -28,18 +27,25 @@ export const Player: React.FC<IPlayer> = (player: IPlayer) => {
         <Typography fontWeight='bold' >{player.name}</Typography>
         <Box>
           <Typography margin='4px'>Monte: {player.lot.length}</Typography>
-          <Card suit='back' value={''} />
+          {player.lot.length === 0 ?
+            <Card suit='back' value={''} key={null} />
+            :
+            <Card 
+              suit={player.lot[player.lot.length - 1].suit} 
+              value={player.lot[player.lot.length - 1].value} key={player.name+'lot'} />
+            
+          }
         </Box>
       </Box>
-      <Hand>
-        {player.hand?.map(card => {
-          return (<Card
-            key={card.value + card.suit}
-            value={card.value}
-            suit={card.suit}
-          />)
-        })}
-      </Hand>
+      <Box sx={{
+        display: 'flex',
+        flex: '1',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        {player.children}
+      </Box>
     </Box>
   )
 }

@@ -11,19 +11,19 @@ export class Deck {
       for (let i = 1; i <= 13; i++) {
         switch (i) {
           case 1:
-            _cards.push({ suit: "clubs", value: 'A' });
+            _cards.push({ suit: "clubs", value: 'A', });
             break;
           case 11:
-            _cards.push({ suit: "clubs", value: 'J' });
+            _cards.push({ suit: "clubs", value: 'J', });
             break;
           case 12:
-            _cards.push({ suit: "clubs", value: 'Q' });
+            _cards.push({ suit: "clubs", value: 'Q', });
             break;
           case 13:
-            _cards.push({ suit: "clubs", value: 'K' });
+            _cards.push({ suit: "clubs", value: 'K', });
             break;
           default:
-            _cards.push({ suit: "clubs", value: `${i}` });
+            _cards.push({ suit: "clubs", value: `${i}`, });
             break;
         }
       }
@@ -32,19 +32,19 @@ export class Deck {
       for (let i = 1; i <= 13; i++) {
         switch (i) {
           case 1:
-            _cards.push({ suit: "diams", value: 'A' });
+            _cards.push({ suit: "diams", value: 'A', });
             break;
           case 11:
-            _cards.push({ suit: "diams", value: 'J' });
+            _cards.push({ suit: "diams", value: 'J', });
             break;
           case 12:
-            _cards.push({ suit: "diams", value: 'Q' });
+            _cards.push({ suit: "diams", value: 'Q', });
             break;
           case 13:
-            _cards.push({ suit: "diams", value: 'K' });
+            _cards.push({ suit: "diams", value: 'K', });
             break;
           default:
-            _cards.push({ suit: "diams", value: `${i}` });
+            _cards.push({ suit: "diams", value: `${i}`, });
             break;
         }
       }
@@ -53,19 +53,19 @@ export class Deck {
       for (let i = 1; i <= 13; i++) {
         switch (i) {
           case 1:
-            _cards.push({ suit: "hearts", value: 'A' });
+            _cards.push({ suit: "hearts", value: 'A', });
             break;
           case 11:
-            _cards.push({ suit: "hearts", value: 'J' });
+            _cards.push({ suit: "hearts", value: 'J', });
             break;
           case 12:
-            _cards.push({ suit: "hearts", value: 'Q' });
+            _cards.push({ suit: "hearts", value: 'Q', });
             break;
           case 13:
-            _cards.push({ suit: "hearts", value: 'K' });
+            _cards.push({ suit: "hearts", value: 'K', });
             break;
           default:
-            _cards.push({ suit: "hearts", value: `${i}` });
+            _cards.push({ suit: "hearts", value: `${i}`, });
             break;
         }
       }
@@ -74,19 +74,19 @@ export class Deck {
       for (let i = 1; i <= 13; i++) {
         switch (i) {
           case 1:
-            _cards.push({ suit: "spades", value: 'A' });
+            _cards.push({ suit: "spades", value: 'A', });
             break;
           case 11:
-            _cards.push({ suit: "spades", value: 'J' });
+            _cards.push({ suit: "spades", value: 'J', });
             break;
           case 12:
-            _cards.push({ suit: "spades", value: 'Q' });
+            _cards.push({ suit: "spades", value: 'Q', });
             break;
           case 13:
-            _cards.push({ suit: "spades", value: 'K' });
+            _cards.push({ suit: "spades", value: 'K', });
             break;
           default:
-            _cards.push({ suit: "spades", value: `${i}` });
+            _cards.push({ suit: "spades", value: `${i}`, });
             break;
         }
       }

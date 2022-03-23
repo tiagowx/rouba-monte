@@ -3,8 +3,14 @@ import { IRoom } from "interfaces/models/room";
 
 export class Room {
   @prop({required: true})
-  room: IRoom;
+  roomName: string;
+  
+  @prop({required: true})
+  leaderName: string;
+  
+  @prop({required: false})
+  password: string;
 
 }
 
-export const URLModel = getModelForClass(Room);
+export const RoomModel = getModelForClass(Room);

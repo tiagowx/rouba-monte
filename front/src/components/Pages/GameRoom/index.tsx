@@ -54,10 +54,7 @@ const index = () => {
 
       let card = GC.ChooseCard(deck.cards);
 
-      let newDeckCards = deck.cards.filter((item) => {
-        if (item !== card)
-          return item
-      });
+      let newDeckCards = deck.cards.filter(item => item !== card);
 
       newDeck.cards = newDeckCards;
       setDeck(newDeck);
@@ -67,13 +64,11 @@ const index = () => {
 
       card = GC.ChooseCard(deck.cards);
 
-      newDeckCards = deck.cards.filter(item => {
-        if (item !== card)
-          return item
-      });
+      newDeckCards = deck.cards.filter(item => item !== card);
 
       newDeck.cards = newDeckCards;
       setDeck(newDeck);
+      
       newPlayer2.hand.push(card);
       setPlayer2(newPlayer2);
 
